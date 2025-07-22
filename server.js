@@ -11,14 +11,11 @@ connectDB();
 
 
 // middlewares
-app.use(express.json());
-app.use(
-  cors({
-    origin: process.env.FRONTEND_URL,
-    methods: ["GET", "POST", "PUT", "DELETE","PATCH"],
-    credentials: true,
-  })
-);
+app.use(express.json())
+app.use(cors({
+  origin: "http://localhost:5173", // ✅ your frontend port
+  credentials: true
+}))
 
 
 // routes
@@ -36,6 +33,5 @@ const port = process.env.PORT || 3000;
 
 
 app.listen(port, () => {
-  console.log(`Server running in ${process.env.NODE_ENV || 'development'} mode on port ${port}`);
-
+  console.log(`Example app listening on port ${port}`)
 })
