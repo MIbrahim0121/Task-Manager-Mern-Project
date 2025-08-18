@@ -24,7 +24,7 @@ const axiosInstance = axios.create();
 
 // Intercept every request to add token
 axiosInstance.interceptors.request.use((config) => {
-  const token = JSON.parse(localStorage.getItem("user"))?.token;
+  const token = localStorage.getItem("token"); // <-- yahan sirf "token"
   if (token) {
     config.headers.Authorization = `Bearer ${token}`;
   }
